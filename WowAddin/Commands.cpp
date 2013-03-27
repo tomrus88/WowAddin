@@ -31,7 +31,7 @@ BOOL CCommand_Beastmaster(char const* cmd, char const* args)
     CDataStore data;
     data.PutInt32(CMSG_BEASTMASTER);
     int state = _strnicmp(args, "off", INT_MAX) != 0;
-    data.PutInt32(state); // TODO: implement PutInt8()
+    data.PutInt8(state);
     data.Finalize();
     s_client.SendPacket(&data);
 
@@ -50,6 +50,17 @@ BOOL CCommand_Invis(char const* cmd, char const* args)
     s_client.SendPacket(&data);
 
     Console::Write("GM invis mode is %s", ECHO_COLOR, state ? "on" : "off");
+
+    return TRUE;
+}
+
+BOOL CCommand_DBLookup(char const* cmd, char const* args)
+{
+    CDataStore data;
+    data.PutInt32(CMSG_DBLOOKUP);
+    data.PutCString(args);
+    data.Finalize();
+    s_client.SendPacket(&data);
 
     return TRUE;
 }

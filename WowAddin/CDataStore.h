@@ -32,6 +32,7 @@ private:
     static PutBytesPtr fpPutBytes;
     static FinalizePtr fpFinalize;
     static DestroyPtr fpDestroy;
+    // TODO: add GetXXX functions
 public:
     CDataStore() { fpInit(this); }
     ~CDataStore() { fpDestroy(this); }

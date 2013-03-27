@@ -40,3 +40,6 @@ void FixInvalidPtrCheck();
 void EnableConsole();
 void InstallGMCommands();
 void UninstallGMCommands();
+
+void SetMessageHandlers();
+BOOL SMSG_DBLOOKUP_Handler(void *a1, Opcodes opcode, int a3, CDataStore *pData);

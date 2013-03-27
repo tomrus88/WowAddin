@@ -1,5 +1,7 @@
 #include "stdafx.h"
 
+extern ClientServices s_client;
+
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved)
 {
     switch (ul_reason_for_call)
@@ -9,6 +11,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
         EnableConsole();
         FixInvalidPtrCheck();
         InstallGameConsoleCommands();
+        SetMessageHandlers();
         break;
     case DLL_THREAD_ATTACH:
         //Console::Write("DLL_THREAD_ATTACH", CON_COLOR_GRAY);
@@ -41,6 +44,7 @@ void InstallGameConsoleCommands()
 {
     Console::RegisterCommand("testcmd", Command_TestCommand, CATEGORY_DEBUG, "Test help string");
     Console::RegisterCommand("beastmaster", CCommand_Beastmaster, CATEGORY_DEBUG, "Beastmaster mode");
+    Console::RegisterCommand("db", CCommand_DBLookup, CATEGORY_DEBUG, "TableName (Name or #ID) Note:Wildcard use * in TableName or Name not ID though");
 
     InstallGMCommands();
 }
@@ -49,6 +53,7 @@ void UninstallGameConsoleCommands()
 {
     Console::UnregisterCommand("testcmd");
     Console::UnregisterCommand("beastmaster");
+    Console::UnregisterCommand("db");
 
     UninstallGMCommands();
 }
@@ -61,4 +66,16 @@ void InstallGMCommands()
 void UninstallGMCommands()
 {
      Console::UnregisterCommand("invis");
+}
+
+void SetMessageHandlers()
+{
+    s_client.SetMessageHandler(SMSG_DBLOOKUP, SMSG_DBLOOKUP_Handler, 0);
+}
+
+BOOL SMSG_DBLOOKUP_Handler(void *a1, Opcodes opcode, int a3, CDataStore *pData)
+{
+    Console::Write("Hello from SMSG_DBLOOKUP_Handler!", ECHO_COLOR);
+
+    return TRUE;
 }
