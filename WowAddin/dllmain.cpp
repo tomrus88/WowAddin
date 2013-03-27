@@ -6,6 +6,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
 	{
 	case DLL_PROCESS_ATTACH:
 		Console::Write("WowAddin v0.1 Alpha Loaded", ECHO_COLOR);
+		EnableConsole();
 		FixInvalidPtrCheck();
 		InstallGameConsoleCommands();
 		break;
@@ -25,11 +26,13 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
 
 void FixInvalidPtrCheck()
 {
-	int *textStart = (int*)0x00D415B8;
-	int *textEnd = (int*)0x00D415BC;
+	*((int*)0x00D415B8) = 0x00000001;
+	*((int*)0x00D415BC) = 0x7FFFFFFF;
+}
 
-	*textStart = 0x00000001;
-	*textEnd = 0x7FFFFFFF;
+void EnableConsole()
+{
+	*((int*)0x00CABCC4) = 1;
 }
 
 void InstallGameConsoleCommands()

@@ -2,4 +2,5 @@ Debug/*
 WowAddin/Debug/*
 *.sdf
 *.suo
+*.opensdf
 ipch/*

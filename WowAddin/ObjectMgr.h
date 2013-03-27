@@ -1,5 +1,7 @@
 #pragma once
 
+class CGObject_C;
+
 enum TypeMask
 {
   TYPEMASK_OBJECT = 0x1,
@@ -14,13 +16,13 @@ enum TypeMask
 
 typedef uint64 (__cdecl *ClntObjMgrGetActivePlayerGuidPtr)();
 
-typedef void* (__cdecl *ClntObjMgrObjectPtr)(uint64 objectGuid, TypeMask objectTypeMask, const char *file, int line);
+typedef CGObject_C* (__cdecl *ClntObjMgrObjectPtr)(uint64 objectGuid, TypeMask objectTypeMask, const char *file, int line);
 
 class ObjectMgr
 {
 public:
 	uint64 GetActivePlayerGuid() { return fpGetActivePlayerGuid(); }
-	void *GetObjectPtr(uint64 objectGuid, TypeMask objectTypeMask) { return fpGetObjectPtr(objectGuid, objectTypeMask, "", 0); }
+	CGObject_C *GetObjectPtr(uint64 objectGuid, TypeMask objectTypeMask) { return fpGetObjectPtr(objectGuid, objectTypeMask, "", 0); }
 private:
 	static ClntObjMgrGetActivePlayerGuidPtr fpGetActivePlayerGuid;
 	static ClntObjMgrObjectPtr fpGetObjectPtr;

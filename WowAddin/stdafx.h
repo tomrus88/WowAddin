@@ -30,7 +30,11 @@ typedef unsigned __int64 uint64;
 #include "ObjectMgr.h"
 #include "Opcodes.h"
 #include "Commands.h"
+#include "CGObject_C.h"
+#include "CGUnit_C.h"
+#include "UpdateFields.h"
 
 void InstallGameConsoleCommands();
 void UninstallGameConsoleCommands();
 void FixInvalidPtrCheck();
+void EnableConsole();
