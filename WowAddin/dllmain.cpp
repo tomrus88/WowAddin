@@ -24,12 +24,14 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
     return TRUE;
 }
 
+// Fix InvalidPtrCheck for callbacks outside of .text section
 void FixInvalidPtrCheck()
 {
     *((int*)0x00D415B8) = 0x00000001;
     *((int*)0x00D415BC) = 0x7FFFFFFF;
 }
 
+// Enable console without using -console command line argument
 void EnableConsole()
 {
     *((int*)0x00CABCC4) = 1;
@@ -38,9 +40,25 @@ void EnableConsole()
 void InstallGameConsoleCommands()
 {
     Console::RegisterCommand("testcmd", Command_TestCommand, CATEGORY_DEBUG, "Test help string");
+    Console::RegisterCommand("beastmaster", CCommand_Beastmaster, CATEGORY_DEBUG, "Beastmaster mode");
+
+    InstallGMCommands();
 }
 
 void UninstallGameConsoleCommands()
 {
     Console::UnregisterCommand("testcmd");
+    Console::UnregisterCommand("beastmaster");
+
+    UninstallGMCommands();
+}
+
+void InstallGMCommands()
+{
+    Console::RegisterCommand("invis", CCommand_Invis, CATEGORY_GM, "Go GM Invis");
+}
+
+void UninstallGMCommands()
+{
+     Console::UnregisterCommand("invis");
 }

@@ -1,6 +1,8 @@
 #include "stdafx.h"
 
 CDataStore* (__thiscall *CDataStore::fpInit)(CDataStore *pData) = (InitializePtr)0x00401050;
+//CDataStore& (__thiscall *CDataStore::fpPutInt8)(CDataStore *pData, char val) = (PutInt8Ptr)0x???;
+//CDataStore& (__thiscall *CDataStore::fpPutInt16)(CDataStore *pData, short val) = (PutInt16Ptr)0x???;
 CDataStore& (__thiscall *CDataStore::fpPutInt32)(CDataStore *pData, int val) = (PutInt32Ptr)0x0047B0A0;
 CDataStore& (__thiscall *CDataStore::fpPutFloat)(CDataStore *pData, float val) = (PutFloatPtr)0x0047B160;
 CDataStore& (__thiscall *CDataStore::fpPutCString)(CDataStore *pData, char const* str) = (PutCStringPtr)0x0047B300;

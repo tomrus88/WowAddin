@@ -38,3 +38,5 @@ void InstallGameConsoleCommands();
 void UninstallGameConsoleCommands();
 void FixInvalidPtrCheck();
 void EnableConsole();
+void InstallGMCommands();
+void UninstallGMCommands();

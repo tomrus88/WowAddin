@@ -16,30 +16,40 @@ BOOL Command_TestCommand(char const* cmd, char const* args)
         return TRUE;
     }
 
-    std::string str(args);
-
-    size_t found = str.find("on");
-
-    BOOL state = 0;
-
-    if(found != std::string::npos)
-        state = 1;
-
-    CDataStore data;
-    data.PutInt32(CMSG_BEASTMASTER);
-    data.PutInt32(state);
-    data.PutCString(str.c_str());
-    data.Finalize();
-    s_client.SendPacket(&data);
-
     CGObject_C *pTarget = s_objMgr.GetObjectPtr(pPlayer->GetValue<uint64>(UNIT_FIELD_TARGET), TYPEMASK_UNIT);
-
-    Console::Write("CMSG_BEASTMASTER is %s", ECHO_COLOR, state ? "on" : "off");
 
     if (pTarget)
         Console::Write("Target %s, guid 0x%016llX", ECHO_COLOR, pTarget->GetObjectName(), pTarget->GetValue<uint64>(OBJECT_FIELD_GUID));
     else
         Console::Write("No target!", ECHO_COLOR);
+
+    return TRUE;
+}
+
+BOOL CCommand_Beastmaster(char const* cmd, char const* args)
+{
+    CDataStore data;
+    data.PutInt32(CMSG_BEASTMASTER);
+    int state = _strnicmp(args, "off", INT_MAX) != 0;
+    data.PutInt32(state); // TODO: implement PutInt8()
+    data.Finalize();
+    s_client.SendPacket(&data);
+
+    Console::Write("Beastmaster mode is %s", ECHO_COLOR, state ? "on" : "off");
+
+    return TRUE;
+}
+
+BOOL CCommand_Invis(char const* cmd, char const* args)
+{
+    CDataStore data;
+    data.PutInt32(CMSG_GM_INVIS);
+    int state = _strnicmp(args, "off", INT_MAX) != 0;
+    data.PutInt32(state);
+    data.Finalize();
+    s_client.SendPacket(&data);
+
+    Console::Write("GM invis mode is %s", ECHO_COLOR, state ? "on" : "off");
 
     return TRUE;
 }
