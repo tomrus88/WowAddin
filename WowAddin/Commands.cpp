@@ -3,7 +3,7 @@
 ClientServices s_client;
 ObjectMgr s_objMgr;
 
-BOOL Command_TestCommand(char const* cmd, char const* args)
+BOOL CCommand_TestCommand(char const* cmd, char const* args)
 {
     Console::Write("Hello from TestCommand: cmd %s, args %s", INPUT_COLOR, cmd, args);
 
@@ -58,7 +58,7 @@ BOOL CCommand_DBLookup(char const* cmd, char const* args)
 {
     CDataStore data;
     data.PutInt32(CMSG_DBLOOKUP);
-    data.PutCString(args);
+    data.PutString(args);
     data.Finalize();
     s_client.SendPacket(&data);
 

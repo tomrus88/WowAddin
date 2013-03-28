@@ -1,6 +1,6 @@
 #pragma once
 
-BOOL Command_TestCommand(char const* cmd, char const* args);
+BOOL CCommand_TestCommand(char const* cmd, char const* args);
 BOOL CCommand_Beastmaster(char const* cmd, char const* args);
 BOOL CCommand_DBLookup(char const* cmd, char const* args);
 

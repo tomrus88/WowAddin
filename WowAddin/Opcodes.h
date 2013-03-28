@@ -1,6 +1,6 @@
 #pragma once
 
-enum Opcodes
+enum NETMESSAGE
 {
     MSG_NULL_ACTION                                 = 0x000,
     CMSG_BOOTME                                     = 0x001,

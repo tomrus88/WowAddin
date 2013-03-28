@@ -33,6 +33,7 @@ typedef unsigned __int64 uint64;
 #include "CGObject_C.h"
 #include "CGUnit_C.h"
 #include "UpdateFields.h"
+#include "OpcodeHandlers.h"
 
 void InstallGameConsoleCommands();
 void UninstallGameConsoleCommands();
@@ -40,6 +41,3 @@ void FixInvalidPtrCheck();
 void EnableConsole();
 void InstallGMCommands();
 void UninstallGMCommands();
-
-void SetMessageHandlers();
-BOOL SMSG_DBLOOKUP_Handler(void *a1, Opcodes opcode, int a3, CDataStore *pData);

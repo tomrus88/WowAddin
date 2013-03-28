@@ -1,7 +1,5 @@
 #include "stdafx.h"
 
-extern ClientServices s_client;
-
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved)
 {
     switch (ul_reason_for_call)
@@ -42,7 +40,7 @@ void EnableConsole()
 
 void InstallGameConsoleCommands()
 {
-    Console::RegisterCommand("testcmd", Command_TestCommand, CATEGORY_DEBUG, "Test help string");
+    Console::RegisterCommand("testcmd", CCommand_TestCommand, CATEGORY_DEBUG, "Test help string");
     Console::RegisterCommand("beastmaster", CCommand_Beastmaster, CATEGORY_DEBUG, "Beastmaster mode");
     Console::RegisterCommand("db", CCommand_DBLookup, CATEGORY_DEBUG, "TableName (Name or #ID) Note:Wildcard use * in TableName or Name not ID though");
 
@@ -66,16 +64,4 @@ void InstallGMCommands()
 void UninstallGMCommands()
 {
      Console::UnregisterCommand("invis");
-}
-
-void SetMessageHandlers()
-{
-    s_client.SetMessageHandler(SMSG_DBLOOKUP, SMSG_DBLOOKUP_Handler, 0);
-}
-
-BOOL SMSG_DBLOOKUP_Handler(void *a1, Opcodes opcode, int a3, CDataStore *pData)
-{
-    Console::Write("Hello from SMSG_DBLOOKUP_Handler!", ECHO_COLOR);
-
-    return TRUE;
 }
