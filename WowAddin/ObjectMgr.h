@@ -1,7 +1,5 @@
 #pragma once
 
-class CGObject_C;
-
 enum TypeMask
 {
     TYPEMASK_OBJECT         = 0x1,

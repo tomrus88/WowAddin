@@ -24,15 +24,15 @@ typedef unsigned int uint32;
 typedef unsigned __int64 uint64;
 
 // Reference additional headers your program requires here
-#include "Console.h"
-#include "CDataStore.h"
-#include "ClientServices.h"
-#include "ObjectMgr.h"
 #include "Opcodes.h"
+#include "UpdateFields.h"
+#include "CDataStore.h"
+#include "Console.h"
+#include "ClientServices.h"
 #include "Commands.h"
 #include "CGObject_C.h"
 #include "CGUnit_C.h"
-#include "UpdateFields.h"
+#include "ObjectMgr.h"
 #include "OpcodeHandlers.h"
 
 void InstallGameConsoleCommands();

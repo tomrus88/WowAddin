@@ -1,7 +1,5 @@
 #pragma once
 
-enum NETMESSAGE;
-
 typedef void (__cdecl *SendPacketPtr)(CDataStore *pData);
 typedef void (__thiscall *SendPacket2Ptr)(void *instance, CDataStore *pData);
 typedef void* (__cdecl *GetCurrentPtr)();

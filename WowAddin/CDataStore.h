@@ -8,7 +8,7 @@ typedef CDataStore& (__thiscall *PutInt16Ptr)(CDataStore *pData, int16 val);
 typedef CDataStore& (__thiscall *PutInt32Ptr)(CDataStore *pData, int32 val);
 typedef CDataStore& (__thiscall *PutInt64Ptr)(CDataStore *pData, int64 val);
 typedef CDataStore& (__thiscall *PutFloatPtr)(CDataStore *pData, float val);
-typedef CDataStore& (__thiscall *PutStringPtr)(CDataStore *pData, char const* str);
+typedef CDataStore& (__thiscall *PutStringPtr)(CDataStore *pData, char const* pString);
 typedef CDataStore& (__thiscall *PutBytesPtr)(CDataStore *pData, uint8* pBuf, uint32 size);
 
 typedef CDataStore& (__thiscall *GetInt8Ptr)(CDataStore *pData, int8& val);
@@ -59,8 +59,8 @@ public:
     CDataStore& PutInt32(int32 val) { return fpPutInt32(this, val); }
     CDataStore& PutInt64(int64 val) { return fpPutInt64(this, val); }
     CDataStore& PutFloat(float val) { return fpPutFloat(this, val); }
-    CDataStore& PutString(char const* str) { return fpPutString(this, str); }
-    CDataStore& PutPutBytes(uint8* buf, uint32 size) { return fpPutBytes(this, buf, size); }
+    CDataStore& PutString(char const* pString) { return fpPutString(this, pString); }
+    CDataStore& PutPutBytes(uint8* pBuf, uint32 size) { return fpPutBytes(this, pBuf, size); }
 
     CDataStore& GetInt8(int8& val) { return fpGetInt8(this, val); }
     CDataStore& GetInt16(int16& val) { return fpGetInt16(this, val); }

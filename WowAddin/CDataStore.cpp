@@ -7,7 +7,7 @@ CDataStore& (__thiscall *CDataStore::fpPutInt16)(CDataStore *pData, int16 val) =
 CDataStore& (__thiscall *CDataStore::fpPutInt32)(CDataStore *pData, int32 val) = (PutInt32Ptr)0x0047B0A0;
 CDataStore& (__thiscall *CDataStore::fpPutInt64)(CDataStore *pData, int64 val) = (PutInt64Ptr)0x0047B100;
 CDataStore& (__thiscall *CDataStore::fpPutFloat)(CDataStore *pData, float val) = (PutFloatPtr)0x0047B160;
-CDataStore& (__thiscall *CDataStore::fpPutString)(CDataStore *pData, char const* str) = (PutStringPtr)0x0047B300;
+CDataStore& (__thiscall *CDataStore::fpPutString)(CDataStore *pData, char const* pString) = (PutStringPtr)0x0047B300;
 CDataStore& (__thiscall *CDataStore::fpPutBytes)(CDataStore *pData, uint8* pBuf, uint32 size) = (PutBytesPtr)0x0047B1C0;
 
 CDataStore& (__thiscall *CDataStore::fpGetInt8)(CDataStore *pData, int8& val) = (GetInt8Ptr)0x0047B340;
