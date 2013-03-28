@@ -12,13 +12,13 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
         SetMessageHandlers();
         break;
     case DLL_THREAD_ATTACH:
-        //Console::Write("DLL_THREAD_ATTACH", CON_COLOR_GRAY);
+        //Console::Write("DLL_THREAD_ATTACH", ECHO_COLOR);
         break;
     case DLL_THREAD_DETACH:
-        //Console::Write("DLL_THREAD_DETACH", CON_COLOR_GRAY);
+        //Console::Write("DLL_THREAD_DETACH", ECHO_COLOR);
         break;
     case DLL_PROCESS_DETACH:
-        //Console::Write("DLL_PROCESS_DETACH", CON_COLOR_GRAY);
+        //Console::Write("DLL_PROCESS_DETACH", ECHO_COLOR);
         //UninstallGameConsoleCommands(); // cause client to crash at closing
         break;
     }
