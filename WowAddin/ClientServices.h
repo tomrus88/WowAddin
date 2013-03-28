@@ -20,7 +20,7 @@ public:
     // Can be used both character selection and in game
     void SendPacket(CDataStore *pData) { fpSendPacket2(GetCurrent(), pData); }
     void *GetCurrent() { return fpGetCurrent(); }
-    void SetMessageHandler(NETMESSAGE opcode, PacketHandler handler, int a3) { fpSetMessageHandler(opcode, handler, a3); }
+    void SetMessageHandler(NETMESSAGE msgId, PacketHandler handler, int a3) { fpSetMessageHandler(msgId, handler, a3); }
 private:
     static SendPacketPtr fpSendPacket;
     static SendPacket2Ptr fpSendPacket2;
