@@ -6,11 +6,9 @@ typedef void (__cdecl *SendPacketPtr)(CDataStore *pData);
 typedef void (__thiscall *SendPacket2Ptr)(void *instance, CDataStore *pData);
 typedef void* (__cdecl *GetCurrentPtr)();
 
-// formal = pointer to ClientConnection? (seems to be always NULL)
-typedef BOOL (__cdecl *PacketHandler)(void *formal, NETMESSAGE msgId, uint32 time, CDataStore *msg);
+typedef BOOL (__cdecl *PacketHandler)(void *param, NETMESSAGE msgId, uint32 time, CDataStore *msg);
 
-// a3 = pointer to NetClient?
-typedef void (__cdecl *SetMessageHandlerPtr)(NETMESSAGE msgId, PacketHandler handler, int a3);
+typedef void (__cdecl *SetMessageHandlerPtr)(NETMESSAGE msgId, PacketHandler handler, void *param);
 
 class ClientServices
 {
@@ -20,7 +18,7 @@ public:
     // Can be used both character selection and in game
     void SendPacket(CDataStore *pData) { fpSendPacket2(GetCurrent(), pData); }
     void *GetCurrent() { return fpGetCurrent(); }
-    void SetMessageHandler(NETMESSAGE msgId, PacketHandler handler, int a3) { fpSetMessageHandler(msgId, handler, a3); }
+    void SetMessageHandler(NETMESSAGE msgId, PacketHandler handler, void *param) { fpSetMessageHandler(msgId, handler, param); }
 private:
     static SendPacketPtr fpSendPacket;
     static SendPacket2Ptr fpSendPacket2;
