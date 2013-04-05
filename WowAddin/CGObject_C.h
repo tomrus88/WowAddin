@@ -13,6 +13,11 @@ enum TypeID
     NUM_TYPEIDS             = 8
 };
 
+struct C3Vector
+{
+    float X, Y, Z;
+};
+
 class CGObject_C // sizeof(CGObject_C) == 0xD0
 {
 public:
@@ -29,8 +34,8 @@ public:
     virtual void GetNamePosition(); // 8
     virtual void GetBag(); // 9
     virtual void GetBag2(); // 10
-    virtual void GetPosition(); // 11 GetPosition(C3Vector &)
-    virtual void GetRawPosition(); // 12 GetRawPosition(C3Vector &)
+    virtual C3Vector& GetPosition(C3Vector &pos); // 11 GetPosition(C3Vector &)
+    virtual C3Vector& GetRawPosition(C3Vector &pos); // 12 GetRawPosition(C3Vector &)
     virtual float GetFacing(); // 13
     virtual float GetRawFacing(); // 14
     virtual float GetScale(); // 15
@@ -42,7 +47,7 @@ public:
     virtual void UpdateInteractIcon(); // 21
     virtual void UpdateInteractIconAttach(); // 22
     virtual void UpdateInteractIconScale(); // 23
-    virtual void GetModelFileName(); // 24 GetModelFileName(char  const**)
+    virtual BOOL GetModelFileName(char const** modelFileName); // 24 GetModelFileName(char  const**)
     virtual void ScaleChangeUpdate(); // 25
     virtual void ScaleChangeFinished(); // 26
     virtual void RenderTargetSelection(); // 27

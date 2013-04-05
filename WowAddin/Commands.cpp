@@ -16,6 +16,14 @@ BOOL CCommand_TestCommand(char const* cmd, char const* args)
         return TRUE;
     }
 
+    C3Vector pos;
+    pPlayer->GetPosition(pos);
+
+    const char *model;
+    BOOL result = pPlayer->GetModelFileName(&model);
+
+    Console::Write("Local player: position %f %f %f, model %s", ECHO_COLOR, pos.X, pos.Y, pos.Z, result ? model : "Unknown");
+
     CGObject_C *pTarget = s_objMgr.GetObjectPtr(pPlayer->GetValue<uint64>(UNIT_FIELD_TARGET), TYPEMASK_UNIT);
 
     if (pTarget)
