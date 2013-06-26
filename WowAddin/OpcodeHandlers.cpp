@@ -7,6 +7,7 @@ void SetMessageHandlers()
     s_client.SetMessageHandler(SMSG_DBLOOKUP, LookupResultsHandler, (void*)0xDEADBABE);
 }
 
+// test change
 BOOL LookupResultsHandler(void *param, NETMESSAGE msgId, uint32 time, CDataStore *msg)
 {
     char received[256];
