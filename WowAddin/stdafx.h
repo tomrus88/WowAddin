@@ -24,6 +24,7 @@ typedef unsigned int uint32;
 typedef unsigned __int64 uint64;
 
 // Reference additional headers your program requires here
+#include "Offsets.h"
 #include "Opcodes.h"
 #include "UpdateFields.h"
 #include "CDataStore.h"
@@ -32,6 +33,7 @@ typedef unsigned __int64 uint64;
 #include "Commands.h"
 #include "CGObject_C.h"
 #include "CGUnit_C.h"
+#include "CGPlayer_C.h"
 #include "ObjectMgr.h"
 #include "OpcodeHandlers.h"
 

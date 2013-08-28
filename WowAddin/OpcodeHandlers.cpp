@@ -1,10 +1,8 @@
 #include "stdafx.h"
 
-extern ClientServices s_client;
-
 void SetMessageHandlers()
 {
-    s_client.SetMessageHandler(SMSG_DBLOOKUP, LookupResultsHandler, (void*)0xDEADBABE);
+    ClientServices::SetMessageHandler(SMSG_DBLOOKUP, LookupResultsHandler, (void*)0xDEADBABE);
 }
 
 // test change

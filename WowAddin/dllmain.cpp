@@ -43,6 +43,7 @@ void InstallGameConsoleCommands()
     Console::RegisterCommand("testcmd", CCommand_TestCommand, CATEGORY_DEBUG, "Test help string");
     Console::RegisterCommand("beastmaster", CCommand_Beastmaster, CATEGORY_DEBUG, "Beastmaster mode");
     Console::RegisterCommand("db", CCommand_DBLookup, CATEGORY_DEBUG, "TableName (Name or #ID) Note:Wildcard use * in TableName or Name not ID though");
+    Console::RegisterCommand("showobjects", CCommand_ShowObjects, CATEGORY_DEBUG, "Display list of visible objects");
 
     InstallGMCommands();
 }
@@ -52,6 +53,7 @@ void UninstallGameConsoleCommands()
     Console::UnregisterCommand("testcmd");
     Console::UnregisterCommand("beastmaster");
     Console::UnregisterCommand("db");
+    Console::UnregisterCommand("showobjects");
 
     UninstallGMCommands();
 }

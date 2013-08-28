@@ -12,11 +12,11 @@ class ClientServices
 {
 public:
     // Use only when in game world
-    void SendGamePacket(CDataStore *pData) { fpSendPacket(pData); }
+    static void SendGamePacket(CDataStore *pData) { pData->Finalize(); fpSendPacket(pData); }
     // Can be used both character selection and in game
-    void SendPacket(CDataStore *pData) { fpSendPacket2(GetCurrent(), pData); }
-    void *GetCurrent() { return fpGetCurrent(); }
-    void SetMessageHandler(NETMESSAGE msgId, PacketHandler handler, void *param) { fpSetMessageHandler(msgId, handler, param); }
+    static void SendPacket(CDataStore *pData) { pData->Finalize(); fpSendPacket2(GetCurrent(), pData); }
+    static void *GetCurrent() { return fpGetCurrent(); }
+    static void SetMessageHandler(NETMESSAGE msgId, PacketHandler handler, void *param) { fpSetMessageHandler(msgId, handler, param); }
 private:
     static SendPacketPtr fpSendPacket;
     static SendPacket2Ptr fpSendPacket2;

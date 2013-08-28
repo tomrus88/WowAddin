@@ -1,5 +1,7 @@
 Debug/*
 WowAddin/Debug/*
+Release/*
+WowAddin/Release/*
 *.sdf
 *.suo
 *.opensdf

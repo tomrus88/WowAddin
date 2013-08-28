@@ -79,10 +79,12 @@
   <ItemGroup>
     <ClInclude Include="CDataStore.h" />
     <ClInclude Include="CGObject_C.h" />
+    <ClInclude Include="CGPlayer_C.h" />
     <ClInclude Include="CGUnit_C.h" />
     <ClInclude Include="ClientServices.h" />
     <ClInclude Include="Commands.h" />
     <ClInclude Include="ObjectMgr.h" />
+    <ClInclude Include="Offsets.h" />
     <ClInclude Include="OpcodeHandlers.h" />
     <ClInclude Include="Opcodes.h" />
     <ClInclude Include="stdafx.h" />

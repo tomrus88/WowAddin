@@ -53,6 +53,7 @@ private:
 public:
     CDataStore() { fpInit(this); }
     ~CDataStore() { fpDestroy(this); }
+    CDataStore(NETMESSAGE msg) { fpInit(this); fpPutInt32(this, msg); }
 
     CDataStore& PutInt8(int8 val) { return fpPutInt8(this, val); }
     CDataStore& PutInt16(int16 val) { return fpPutInt16(this, val); }

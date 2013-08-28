@@ -54,6 +54,12 @@
     <ClInclude Include="OpcodeHandlers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CGPlayer_C.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Offsets.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
