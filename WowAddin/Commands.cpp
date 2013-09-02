@@ -77,7 +77,7 @@ BOOL ShowObjectsCallback(uint64 objectGuid, void *param)
 
 BOOL CCommand_ShowObjects(char const* cmd, char const* args)
 {
-	if (!ObjectMgr::GetActivePlayerGuid())
+	if (!ObjectMgr::IsInWorld())
 	{
 		Console::Write("Error: Not in world!", ERROR_COLOR);
 		return TRUE;
