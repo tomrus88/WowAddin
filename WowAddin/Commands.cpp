@@ -5,13 +5,14 @@ BOOL CCommand_TestCommand(char const* cmd, char const* args)
     Console::Write("Hello from TestCommand: cmd %s, args %s", INPUT_COLOR, cmd, args);
 
     uint64 guid = ObjectMgr::GetActivePlayerGuid();
-    CGObject_C *pPlayer = ObjectMgr::GetObjectPtr(guid, TYPEMASK_PLAYER);
 
-    if (!pPlayer)
-    {
-        Console::Write("TestCommand: Not in world!", ERROR_COLOR);
-        return TRUE;
-    }
+	if (!guid)
+	{
+		Console::Write("TestCommand: Not in world!", ERROR_COLOR);
+		return TRUE;
+	}
+
+    CGObject_C *pPlayer = ObjectMgr::GetObjectPtr(guid, TYPEMASK_PLAYER);
 
     C3Vector pos;
     pPlayer->GetPosition(pos);
@@ -76,6 +77,12 @@ BOOL ShowObjectsCallback(uint64 objectGuid, void *param)
 
 BOOL CCommand_ShowObjects(char const* cmd, char const* args)
 {
+	if (!ObjectMgr::GetActivePlayerGuid())
+	{
+		Console::Write("Error: Not in world!", ERROR_COLOR);
+		return TRUE;
+	}
+
     ObjectMgr::EnumVisibleObjects(ShowObjectsCallback, NULL);
 
     return TRUE;
