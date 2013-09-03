@@ -2,7 +2,7 @@
 
 BOOL CCommand_TestCommand(char const* cmd, char const* args)
 {
-    Console::Write("Hello from TestCommand: cmd %s, args %s", INPUT_COLOR, cmd, args);
+    Console::Write("Hello from TestCommand: cmd '%s', args '%s'", INPUT_COLOR, cmd, args);
 
     uint64 guid = ObjectMgr::GetActivePlayerGuid();
 
@@ -20,12 +20,12 @@ BOOL CCommand_TestCommand(char const* cmd, char const* args)
     const char *model;
     BOOL result = pPlayer->GetModelFileName(&model);
 
-    Console::Write("Local player: position %f %f %f, model %s", ECHO_COLOR, pos.X, pos.Y, pos.Z, result ? model : "Unknown");
+    Console::Write("Local player: position x: %f y: %f z: %f, model '%s'", ECHO_COLOR, pos.X, pos.Y, pos.Z, result ? model : "Unknown");
 
     CGObject_C *pTarget = ObjectMgr::GetObjectPtr(pPlayer->GetValue<uint64>(UNIT_FIELD_TARGET), TYPEMASK_UNIT);
 
     if (pTarget)
-        Console::Write("Target %s, guid 0x%016llX", ECHO_COLOR, pTarget->GetObjectName(), pTarget->GetValue<uint64>(OBJECT_FIELD_GUID));
+        Console::Write("Target '%s', guid 0x%016llX", ECHO_COLOR, pTarget->GetObjectName(), pTarget->GetValue<uint64>(OBJECT_FIELD_GUID));
     else
         Console::Write("No target!", ECHO_COLOR);
 
@@ -70,7 +70,7 @@ BOOL ShowObjectsCallback(uint64 objectGuid, void *param)
     CGObject_C *pObject = ObjectMgr::GetObjectPtr(objectGuid, TYPEMASK_OBJECT);
 
     if (pObject)
-        Console::Write("Object %s, guid 0x%016llX", ECHO_COLOR, pObject->GetObjectName(), pObject->GetValue<uint64>(OBJECT_FIELD_GUID));
+		Console::Write("Object '%s', guid 0x%016llX", HIGHLIGHT_COLOR, pObject->GetObjectName(), pObject->GetValue<uint64>(OBJECT_FIELD_GUID));
 
     return TRUE;
 }

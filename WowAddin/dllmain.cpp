@@ -25,17 +25,24 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
     return TRUE;
 }
 
+struct SizeOfCode
+{
+    DWORD_PTR start;
+    DWORD_PTR end;
+};
+
 // Fix InvalidPtrCheck for callbacks outside of .text section
 void FixInvalidPtrCheck()
 {
-    *((int*)0x00D415B8) = 0x00000001;
-    *((int*)0x00D415BC) = 0x7FFFFFFF;
+    SizeOfCode *s = reinterpret_cast<SizeOfCode*>(SIZE_OF_CODE_ADDR);
+    s->start = 0x00000001;
+    s->end = 0x7FFFFFFF;
 }
 
 // Enable console without using -console command line argument
 void EnableConsole()
 {
-    *((int*)0x00CABCC4) = 1;
+    *reinterpret_cast<DWORD*>(ENABLE_CONSOLE_ADDR) = 1;
 }
 
 void InstallGameConsoleCommands()
