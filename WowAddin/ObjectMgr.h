@@ -14,6 +14,8 @@ enum TypeMask
 
 typedef uint64 (__cdecl *ClntObjMgrGetActivePlayerGuidPtr)();
 
+typedef BOOL (__cdecl *ClntObjMgrIsPlayerFullyLoadedInWorldPtr)();
+
 typedef CGObject_C* (__cdecl *ClntObjMgrObjectPtr)(uint64 objectGuid, TypeMask objectTypeMask, const char *file, int line);
 
 // return 0 to stop enumeration, 1 to continue
@@ -28,8 +30,9 @@ public:
     static uint64 GetActivePlayerGuid() { return fpGetActivePlayerGuid(); }
     static CGObject_C *GetObjectPtr(uint64 objectGuid, TypeMask objectTypeMask) { return fpGetObjectPtr(objectGuid, objectTypeMask, "", 0); }
     static BOOL EnumVisibleObjects(EnumVisibleObjectsCallback callback, void *param) { return fpEnumVisibleObjects(callback, param); }
-	static BOOL IsInWorld() { return fpGetActivePlayerGuid() != 0; }
+	static BOOL IsInWorld() { return fpIsPlayerFullyLoadedInWorld(); }
 private:
+	static ClntObjMgrIsPlayerFullyLoadedInWorldPtr fpIsPlayerFullyLoadedInWorld;
     static ClntObjMgrGetActivePlayerGuidPtr fpGetActivePlayerGuid;
     static ClntObjMgrObjectPtr fpGetObjectPtr;
     static ClntObjMgrEnumVisibleObjectsPtr fpEnumVisibleObjects;
