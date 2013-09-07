@@ -16,5 +16,7 @@
 #define ConsoleRegisterCommandAddr 0x00769100
 #define ConsoleUnregisterCommandAddr 0x007689E0
 
+#define IsPlayerFullyLoadedInWorldAddr 0x008C6330
+
 #define SIZE_OF_CODE_ADDR 0x00D415B8
 #define ENABLE_CONSOLE_ADDR 0x00CABCC4
