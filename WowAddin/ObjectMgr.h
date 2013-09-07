@@ -19,17 +19,17 @@ typedef BOOL (__cdecl *ClntObjMgrIsPlayerFullyLoadedInWorldPtr)();
 typedef CGObject_C* (__cdecl *ClntObjMgrObjectPtr)(uint64 objectGuid, TypeMask objectTypeMask, const char *file, int line);
 
 // return 0 to stop enumeration, 1 to continue
-typedef BOOL (__cdecl *EnumVisibleObjectsCallback)(uint64 objectGuid, void *param);
+typedef BOOL (__cdecl *VisibleObjectsEnumProc)(uint64 objectGuid, void *param);
 
 // returns 0 if enumeration stopped by callback, 1 otherwise (iterate through all objects)
-typedef BOOL (__cdecl *ClntObjMgrEnumVisibleObjectsPtr)(EnumVisibleObjectsCallback callback, void *param);
+typedef BOOL (__cdecl *ClntObjMgrEnumVisibleObjectsPtr)(VisibleObjectsEnumProc proc, void *param);
 
 class ObjectMgr
 {
 public:
     static uint64 GetActivePlayerGuid() { return fpGetActivePlayerGuid(); }
     static CGObject_C *GetObjectPtr(uint64 objectGuid, TypeMask objectTypeMask) { return fpGetObjectPtr(objectGuid, objectTypeMask, "", 0); }
-    static BOOL EnumVisibleObjects(EnumVisibleObjectsCallback callback, void *param) { return fpEnumVisibleObjects(callback, param); }
+    static BOOL EnumVisibleObjects(VisibleObjectsEnumProc proc, void *param) { return fpEnumVisibleObjects(proc, param); }
 	static BOOL IsInWorld() { return fpIsPlayerFullyLoadedInWorld(); }
 private:
 	static ClntObjMgrIsPlayerFullyLoadedInWorldPtr fpIsPlayerFullyLoadedInWorld;
