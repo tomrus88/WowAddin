@@ -65,7 +65,7 @@ BOOL CCommand_DBLookup(char const* cmd, char const* args)
     return TRUE;
 }
 
-BOOL ShowObjectsCallback(uint64 objectGuid, void *param)
+BOOL ShowObjectsEnumProc(uint64 objectGuid, void *param)
 {
     CGObject_C *pObject = ObjectMgr::GetObjectPtr(objectGuid, TYPEMASK_OBJECT);
 
@@ -83,7 +83,7 @@ BOOL CCommand_ShowObjects(char const* cmd, char const* args)
 		return TRUE;
 	}
 
-    ObjectMgr::EnumVisibleObjects(ShowObjectsCallback, NULL);
+    ObjectMgr::EnumVisibleObjects(ShowObjectsEnumProc, NULL);
 
     return TRUE;
 }
